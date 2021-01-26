@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  aws-ecr: circleci/aws-ecr@6.7.0
+  aws-ecr: circleci/aws-ecr@6.15.2
 
 workflows:
   build_and_push_image:
@@ -12,7 +12,8 @@ workflows:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           create-repo: true
           dockerfile: Dockerfile
-          path: .
+          path: ./
+          profile-name: default
           region: AWS_REGION
-          repo: circleci-ecr-orb-demo
+          repo: circleci-ecr-orb-demo1
           tag: "$CIRCLE_SHA1"
