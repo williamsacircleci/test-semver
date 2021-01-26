@@ -8,6 +8,10 @@ ignore-master: &ignore-master
       ignore:
         - master
 
+## ORBS
+orbs:
+  aws-ecr: circleci/aws-ecr@0.0.4
+
 ### COMMANDS
 
 commands:
@@ -89,10 +93,15 @@ jobs:
            echo "export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}" >> $BASH_ENV
 
 workflows:
-  version: 2
-  build:
+  build_test_deploy:
     jobs:
-      - build:
-          name: data_competitor_bucket_s3_pull
-          aws_access_key_id: ${AWS_ACCESS_KEY_ID}
-          aws_secret_key: ${AWS_SECRET_ACCESS_KEY}
+      - aws-ecr/build:
+          account-url: AWS_ECR_ACCOUNT_URL
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: true
+          dockerfile: Dockerfile
+          path: .
+          region: AWS_REGION
+          repo: circleci-ecr-orb-demo
+          tag: "$CIRCLE_SHA1"
