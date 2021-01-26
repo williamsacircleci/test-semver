@@ -93,7 +93,7 @@ jobs:
            echo "export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}" >> $BASH_ENV
 
 workflows:
-  build_test_deploy:
+  build:
     jobs:
       - aws-ecr/build:
           account-url: AWS_ECR_ACCOUNT_URL
