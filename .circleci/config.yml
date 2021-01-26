@@ -13,6 +13,14 @@ ignore-master: &ignore-master
       ignore:
         - master
 
+### EXECUTORS
+
+executors:
+  heycar-citools-helm:
+    docker:
+      - image: amazon/aws-cli:latest
+        <<: *executor-auth-aws
+
 ## ORBS
 orbs:
   aws-ecr: circleci/aws-ecr@6.7.0
