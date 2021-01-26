@@ -16,6 +16,7 @@ ignore-master: &ignore-master
 ## ORBS
 orbs:
   aws-ecr: circleci/aws-ecr@6.7.0
+  <<: *executor-auth-aws
 
 ## WORKFLOWS
 
