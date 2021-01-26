@@ -90,6 +90,9 @@ jobs:
 
 workflows:
   version: 2
-  build_and_test:
+  build:
     jobs:
-      - build
+      - build:
+          name: data_competitor_bucket_s3_pull
+          aws_access_key_id: ${AWS_ACCESS_KEY_ID}
+          aws_secret_key: ${AWS_SECRET_ACCESS_KEY}
