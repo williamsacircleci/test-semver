@@ -2,29 +2,15 @@ version: 2.1
 
 ## Aliases
 
-executor-auth-aws: &executor-auth-aws
-  aws_auth:
-    aws_access_key_id: $AWS_ACCESS_KEY_ID
-    aws_secret_access_key: $AWS_SECRET_ACCESS_KEY
-
 ignore-master: &ignore-master
   filters:
     branches:
       ignore:
         - master
 
-### EXECUTORS
-
-executors:
-  heycar-citools-helm:
-    docker:
-      - image: amazon/aws-cli:latest
-        <<: *executor-auth-aws
-
 ## ORBS
 orbs:
   aws-ecr: circleci/aws-ecr@6.7.0
-  <<: *executor-auth-aws
 
 ## WORKFLOWS
 
@@ -42,4 +28,3 @@ workflows:
           repo: circleci-ecr-orb-demo
           tag: "$CIRCLE_SHA1"
           <<: *ignore-master
-          <<: *executor-auth-aws
