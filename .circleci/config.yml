@@ -1,8 +1,19 @@
 version: 2.1
 
+### Aliases
+
+ignore-master: &ignore-master
+  filters:
+    branches:
+      ignore:
+        - master
+
+## ORBS
 orbs:
   aws-ecr: circleci/aws-ecr@6.15.2
 
+
+### WORKFLOWS
 workflows:
   build_and_push_image:
     jobs:
