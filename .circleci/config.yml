@@ -15,5 +15,5 @@ workflows:
           path: ./
           profile-name: default
           region: AWS_REGION
-          repo: circleci-ecr-orb-demo1
+          repo: heycar-semver
           tag: "$CIRCLE_SHA1"
